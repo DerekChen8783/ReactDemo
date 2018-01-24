@@ -1,6 +1,5 @@
 .app-header {
     background-color: rgb(56, 215, 236);
-    height: 100px;
     padding: 20px;
     margin-bottom: 10px;
     color: white;
@@ -22,9 +21,17 @@
 
 .nav-bar{
     display:flex;
+    flex-wrap:wrap;
     justify-content:flex-start;
 }
 
 .nav-bar li{
     margin: 10px;
 }
+
+.fixed-header {
+    position: fixed;
+    top:0; left:0;
+    width: 100%; 
+    background-color: rgb(56, 215, 236);
+  }
