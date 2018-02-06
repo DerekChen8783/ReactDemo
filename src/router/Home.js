@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 class Home extends Component {
     constructor(props){
@@ -22,20 +23,22 @@ class Home extends Component {
         }));
     }
 
-
     render() {
         return (
             <div>
-                <p> This is Home Page</p>
-                <ul  id="test">
-                    <li 
-                        onMouseOver={(e)=>this.handleMouseOver(e)}
-                        onMouseLeave={(e)=>this.handleMouseOver(e)}
-                    >item 1</li>
-                    <li>item 2</li>
-                    <li>item 3</li>
-                </ul>
-                <p>{this.state.isToggleOn?"Yes":"No"}</p>
+                <Header mode={this.props.mobileMode} />
+                <div>
+                    <p> This is Home Page</p>
+                    <ul id="test">
+                        <li
+                            onMouseOver={(e) => this.handleMouseOver(e)}
+                            onMouseLeave={(e) => this.handleMouseOver(e)}
+                        >item 1</li>
+                        <li>item 2</li>
+                        <li>item 3</li>
+                    </ul>
+                    <p>{this.state.isToggleOn ? "Yes" : "No"}</p>
+                </div>
             </div>
         );
     }

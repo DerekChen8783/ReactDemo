@@ -8,50 +8,54 @@ class Header extends Component {
         super(props);
         this.state = {
             isToggleOn: true,
-            mobileMode: this._checkMode(),
+            //mobileMode: this._checkMode(),
             isHeaderFixed: false
         };
+        this.handleScoll=this.handleScoll.bind(this);
+        //this.updateDimensions=this.updateDimensions.bind(this);
     }
 
-    _checkMode() {
-        const width = window.innerWidth || document.body.clientWidth;
-        const isMobile = width < 800 ? true : false;//normally we need some constant width instead of 600 here
-        return isMobile;
-    }
+    // _checkMode() {
+    //     const width = window.innerWidth || document.body.clientWidth;
+    //     const isMobile = width < 800 ? true : false;//normally we need some constant width instead of 600 here
+    //     return isMobile;
+    // }
 
     componentDidMount() {
-        window.addEventListener("resize", this.updateDimensions.bind(this));
-        window.addEventListener("scroll", this.handleScoll.bind(this));
-        
+        //window.addEventListener("resize", this.updateDimensions);
+        window.addEventListener("scroll", this.handleScoll);   
     }
 
     componentWillUnmount() {
-        window.removeEventListener("resize", this.updateDimensions.bind(this));
-        window.removeEventListener("scroll", this.handleScoll.bind(this));
+        //window.removeEventListener("resize", this.updateDimensions);
+        window.removeEventListener("scroll", this.handleScoll);
     }
 
-    updateDimensions() {
-        this.nonFixedHeaderHeight = document.getElementById('container').clientHeight|| 0;
-        this.setState(prevState => ({
-            mobileMode: this._checkMode(),
-        }));
-    }
+    // updateDimensions() {
+    //     this.nonFixedHeaderHeight = document.getElementById('container').clientHeight|| 0;
+    //     this.setState(prevState => ({
+    //         mobileMode: this._checkMode(),
+    //     }));
+    // }
 
     handleScoll() {
-        this.nonFixedHeaderHeight = document.getElementById('container').clientHeight || 0;
-        console.log("header hight",this.nonFixedHeaderHeight);
+        this.nonFixedHeaderHeight = document.getElementById('container').clientHeight||0;
+        console.log("header hight", this.nonFixedHeaderHeight);
         const headerFixed = window.scrollY < this.nonFixedHeaderHeight ? false : true;
-        this.setState(prevState => ({
-            isHeaderFixed: headerFixed
-        }));
+        if (this.state.isHeaderFixed !== headerFixed) {
+            this.setState(prevState => ({
+                isHeaderFixed: headerFixed
+            }));
+        }
+
     }
 
-    shouldComponentUpdate(nextProp, nextState) {
-        if (JSON.stringify(nextState) === JSON.stringify(this.state)) {
-            return false;
-        }
-        return true;
-    }
+    // shouldComponentUpdate(nextProp, nextState) {
+    //     if (JSON.stringify(nextState) === JSON.stringify(this.state)) {
+    //         return false;
+    //     }
+    //     return true;
+    // }
 
     handleClick() {
         this.setState(prevState => ({
@@ -101,8 +105,9 @@ class Header extends Component {
     }
 
     render() {
+        console.log(this.props.mode);
         return (
-            this.state.mobileMode ? this.renderMobileHeader():this.renderNormalHeader()
+            this.props.mode ? this.renderMobileHeader():this.renderNormalHeader()
         );
     }
 }
