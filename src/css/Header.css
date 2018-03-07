@@ -10,13 +10,28 @@
     justify-content:space-between;
 }
 
+.fixed-header .mobile-top-header p{
+    display:none;
+}
+
+.mobile-top-header {
+    display:flex;
+    flex-direction: column;
+    
+}
 .app-logo{
     padding-left: 20px;
 }
 
+.app-name {
+    font-size:40px;
+    color: black;
+    font-weight:bold;
+    text-align: center;
+}
+
 .header-search-bar{
     padding-left:20px;
-    
 }
 
 .nav-bar{
@@ -35,3 +50,8 @@
     width: 100%; 
     background-color: rgb(56, 215, 236);
   }
+
+
+ul {
+    list-style-type: none;
+}

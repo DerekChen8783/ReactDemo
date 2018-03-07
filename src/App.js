@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   updateDimensions() {
-    this.nonFixedHeaderHeight = document.getElementById('container').clientHeight || 0;
+    this.nonFixedHeaderHeight = document.getElementById('head-container').clientHeight || 0;
     this.setState(prevState => ({
       mobileMode: this._checkMode(),
     }));
@@ -56,7 +56,7 @@ class App extends Component {
           <Route path="/about" render={(routeProps) => (
             <About {...routeProps} mobileMode={this.state.mobileMode} />
           )}/>
-          <Route path="/:group" component = {()=>(<div><Header mode={this.state.mobileMode}/>group page</div>)}/>
+          <Route exact path="/group/:groupName" component = {()=>(<div><Header mode={this.state.mobileMode}/>group page</div>)}/>
         </div>
       </Router>
     );
