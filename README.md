@@ -1,3 +1,10 @@
+This project is responsive web using react-router and react.
+
+currently only have a header which is responsive for different screen size.
+
+
+
+***********************************************************************************************************************
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
